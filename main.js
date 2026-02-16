@@ -101,7 +101,11 @@ function render() {
   elements.logBox.innerHTML = `<p>${state.lastRound}</p>`;
 
   elements.gameOverOverlay.hidden = !state.gameOver;
-  elements.winnerText.textContent = `Winner: ${state.winner === "player" ? "Player" : "AI"}`;
+  if (state.gameOver && state.winner) {
+    elements.winnerText.textContent = `Winner: ${state.winner === "player" ? "Player" : "AI"}`;
+  } else {
+    elements.winnerText.textContent = "Winner: -";
+  }
 }
 
 function triggerHitEffects(attackerSide, defenderSide) {
