@@ -105,26 +105,19 @@ body {
 }
 
 .avatar {
-  width: 74px;
-  height: 74px;
+  width: 150px;
+  height: 150px;
   margin: 0 auto 0.6rem;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.6);
-}
-
-.player-panel .avatar {
-  background: var(--player);
-}
-
-.ai-panel .avatar {
-  background: var(--ai);
+  border-radius: 0;
+  overflow: visible;
+  border: none;
+  background: transparent;
 }
 
 .avatar img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -364,6 +357,11 @@ button:hover {
 @media (max-width: 700px) {
   .game-shell {
     padding: 1rem;
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
   }
 
   .characters {
