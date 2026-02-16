@@ -14,10 +14,6 @@
   box-sizing: border-box;
 }
 
-[hidden] {
-  display: none !important;
-}
-
 body {
   margin: 0;
   min-height: 100vh;
@@ -269,9 +265,13 @@ button:hover {
   position: fixed;
   inset: 0;
   background: rgba(15, 23, 42, 0.45);
-  display: grid;
+  display: none;
   place-items: center;
   padding: 1rem;
+}
+
+.game-over-overlay.is-open {
+  display: grid;
 }
 
 .game-over-card {

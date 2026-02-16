@@ -100,7 +100,7 @@ function render() {
   elements.nextBtn.hidden = !state.awaitingNext || state.gameOver;
   elements.logBox.innerHTML = `<p>${state.lastRound}</p>`;
 
-  elements.gameOverOverlay.hidden = !state.gameOver;
+  elements.gameOverOverlay.classList.toggle("is-open", state.gameOver);
   if (state.gameOver && state.winner) {
     elements.winnerText.textContent = `Winner: ${state.winner === "player" ? "Player" : "AI"}`;
   } else {
