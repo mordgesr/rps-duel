@@ -6,6 +6,10 @@ const state = {
     player: 0,
     ai: 0,
   },
+  hp: {
+    player: 100,
+    ai: 100,
+  },
   attacker: Math.random() < 0.5 ? "player" : "ai",
   pendingSelection: null,
   pendingAiAttack: null,
@@ -21,6 +25,8 @@ const state = {
 const elements = {
   playerScore: document.getElementById("player-score"),
   aiScore: document.getElementById("ai-score"),
+  playerHp: document.getElementById("player-hp"),
+  aiHp: document.getElementById("ai-hp"),
   playerScoreItem: document.getElementById("player-score-item"),
   aiScoreItem: document.getElementById("ai-score-item"),
   attackerName: document.getElementById("attacker-name"),
@@ -71,6 +77,8 @@ function startTurnMessage() {
 function render() {
   elements.playerScore.textContent = String(state.scores.player);
   elements.aiScore.textContent = String(state.scores.ai);
+  elements.playerHp.textContent = String(state.hp.player);
+  elements.aiHp.textContent = String(state.hp.ai);
   elements.attackerName.textContent = attackerLabel();
 
   if (state.gameOver) {
@@ -144,11 +152,12 @@ function resolveRound() {
   if (attackDir !== blockDir) {
     state.scores[state.attacker] += 1;
     const defenderSide = state.attacker === "player" ? "ai" : "player";
+    state.hp[defenderSide] = Math.max(0, state.hp[defenderSide] - 33);
     triggerHitEffects(state.attacker, defenderSide);
     state.lastRound =
       `${attacker} attack: ${capitalize(attackDir)}. ` +
       `${defender} block: ${capitalize(blockDir)}. ` +
-      `${attacker} scores!`;
+      `${attacker} scores! ${defender} HP: ${state.hp[defenderSide]}.`;
   } else {
     state.hitDefender = null;
     state.scoreFlash = null;
@@ -182,6 +191,8 @@ function advanceTurn() {
 function resetGame() {
   state.scores.player = 0;
   state.scores.ai = 0;
+  state.hp.player = 100;
+  state.hp.ai = 100;
   state.attacker = Math.random() < 0.5 ? "player" : "ai";
   state.pendingSelection = null;
   state.pendingAiAttack = null;
