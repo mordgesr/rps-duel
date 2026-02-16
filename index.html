@@ -12,30 +12,34 @@
       <h1>Duel Arena</h1>
       <div class="score-row">
         <div class="score-item" id="player-score-item">
-          <span class="label">Player</span>
+          <span class="label">Knight</span>
           <span class="value" id="player-score">0</span>
           <span class="score-burst" aria-hidden="true">+1</span>
         </div>
         <div class="score-divider">:</div>
         <div class="score-item" id="ai-score-item">
-          <span class="label">AI</span>
+          <span class="label">Dragon</span>
           <span class="value" id="ai-score">0</span>
           <span class="score-burst" aria-hidden="true">+1</span>
         </div>
       </div>
-      <p class="attacker-label">Attacker: <strong id="attacker-name">Player</strong></p>
+      <p class="attacker-label">Attacker: <strong id="attacker-name">Knight</strong></p>
     </header>
 
     <section class="characters">
       <article class="character-panel player-panel" id="player-panel">
-        <h2>Player</h2>
-        <div class="avatar">P</div>
+        <h2>Knight</h2>
+        <div class="avatar">
+          <img src="knight.png" alt="Knight">
+        </div>
         <p class="status">HP: <span id="player-hp">100</span></p>
       </article>
 
       <article class="character-panel ai-panel" id="ai-panel">
-        <h2>AI</h2>
-        <div class="avatar">AI</div>
+        <h2>Dragon</h2>
+        <div class="avatar">
+          <img src="dragon.png" alt="Dragon">
+        </div>
         <p class="status">HP: <span id="ai-hp">100</span></p>
       </article>
     </section>

@@ -1,5 +1,9 @@
 const TARGET_SCORE = 3;
 const DIRECTIONS = ["head", "body", "legs"];
+const NAMES = {
+  player: "Knight",
+  ai: "Dragon",
+};
 
 const state = {
   scores: {
@@ -51,11 +55,11 @@ function randomDirection() {
 }
 
 function attackerLabel() {
-  return state.attacker === "player" ? "Player" : "AI";
+  return NAMES[state.attacker];
 }
 
 function defenderLabel() {
-  return state.attacker === "player" ? "AI" : "Player";
+  return state.attacker === "player" ? NAMES.ai : NAMES.player;
 }
 
 function prepareTurn() {
@@ -68,10 +72,10 @@ function prepareTurn() {
 
 function startTurnMessage() {
   if (state.attacker === "player") {
-    return "Player turn: Select attack direction.";
+    return `${NAMES.player} turn: Select attack direction.`;
   }
 
-  return "AI turn: Select block direction.";
+  return `${NAMES.ai} turn: Select block direction.`;
 }
 
 function render() {
@@ -110,7 +114,7 @@ function render() {
 
   elements.gameOverOverlay.classList.toggle("is-open", state.gameOver);
   if (state.gameOver && state.winner) {
-    elements.winnerText.textContent = `Winner: ${state.winner === "player" ? "Player" : "AI"}`;
+    elements.winnerText.textContent = `Winner: ${NAMES[state.winner]}`;
   } else {
     elements.winnerText.textContent = "Winner: -";
   }
