@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2D Duel Game UI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="scoreboard">
+      <h1>Duel Arena</h1>
+      <div class="score-row">
+        <div class="score-item" id="player-score-item">
+          <span class="label">Player</span>
+          <span class="value" id="player-score">0</span>
+          <span class="score-burst" aria-hidden="true">+1</span>
+        </div>
+        <div class="score-divider">:</div>
+        <div class="score-item" id="ai-score-item">
+          <span class="label">AI</span>
+          <span class="value" id="ai-score">0</span>
+          <span class="score-burst" aria-hidden="true">+1</span>
+        </div>
+      </div>
+      <p class="attacker-label">Attacker: <strong id="attacker-name">Player</strong></p>
+    </header>
+
+    <section class="characters">
+      <article class="character-panel player-panel" id="player-panel">
+        <h2>Player</h2>
+        <div class="avatar">P</div>
+        <p class="status">HP: <span id="player-hp">100</span></p>
+      </article>
+
+      <article class="character-panel ai-panel" id="ai-panel">
+        <h2>AI</h2>
+        <div class="avatar">AI</div>
+        <p class="status">HP: <span id="ai-hp">100</span></p>
+      </article>
+    </section>
+
+    <section class="controls" aria-label="Attack controls">
+      <h3 id="selection-mode">Select Direction</h3>
+      <div class="direction-buttons">
+        <button type="button" data-direction="head">Head</button>
+        <button type="button" data-direction="body">Body</button>
+        <button type="button" data-direction="legs">Legs</button>
+      </div>
+      <button type="button" class="confirm-btn" id="confirm-btn">Confirm</button>
+      <button type="button" class="next-btn" id="next-btn" hidden>Next</button>
+    </section>
+
+    <section class="log-area" aria-label="Battle log">
+      <h3>Result Log</h3>
+      <div class="log-box" id="battle-log">
+        <p>Round 1: Waiting for action...</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="game-over-overlay" id="game-over-overlay" hidden>
+    <div class="game-over-card">
+      <h2>GAME OVER</h2>
+      <p id="winner-text">Winner: Player</p>
+      <button type="button" id="restart-btn">Restart</button>
+    </div>
+  </div>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
